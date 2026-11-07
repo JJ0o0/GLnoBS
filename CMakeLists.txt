@@ -19,7 +19,7 @@ add_library(glpp::glpp ALIAS glpp)
 
 target_sources(glpp
     PRIVATE
-        src/core/version.cpp
+        src/diagnostics/log.cpp
 )
 
 target_include_directories(glpp
