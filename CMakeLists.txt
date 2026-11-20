@@ -20,6 +20,8 @@ add_library(glpp::glpp ALIAS glpp)
 target_sources(glpp
     PRIVATE
         src/diagnostics/log.cpp
+        
+        src/core/device.cpp
 )
 
 target_include_directories(glpp
