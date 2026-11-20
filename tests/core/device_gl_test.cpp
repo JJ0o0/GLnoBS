@@ -48,6 +48,11 @@ int main() {
     auto device = glpp::Device::create();
     CHECK(device.has_value());
 
+    glfwMakeContextCurrent(nullptr);
+        auto no_context = glpp::Device::create();
+        CHECK(!no_context.has_value() && no_context.error().code == glpp::ErrorCode::ContextNotActive);
+    glfwMakeContextCurrent(glfw_window);
+
     glfwDestroyWindow(glfw_window);
     glfwTerminate();
 
