@@ -3,7 +3,7 @@ project(
     GLnoBS
     DESCRIPTION "OpenGL, No Bullshitting"
     VERSION 0.1.0
-    LANGUAGES CXX
+    LANGUAGES C CXX
 )
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -31,6 +31,19 @@ target_include_directories(glpp
 target_compile_options(glpp
     PRIVATE
         -Wall -Wextra
+)
+
+if (GLPP_BUILD_TESTS AND NOT TARGET glad::glad)
+    add_subdirectory(tests/third_party/glad)
+endif()
+
+if(NOT TARGET glad::glad)
+    message(FATAL_ERROR "'glad::glad' target not found! Define said target before 'add_subdirectory(GLnoBS).'")
+endif()
+
+target_link_libraries(glpp
+    PRIVATE
+        glad::glad
 )
 
 if (GLPP_BUILD_TESTS)
