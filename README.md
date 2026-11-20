@@ -18,7 +18,7 @@ Requirements:
 To also build the tests and run them:
 ```bash
 ./scripts/build.sh --tests
-ctest --test-dir build --output-on-failure
+./scripts/run-tests.sh
 ```
 
 The output is the static library `build/libglpp.a`.
